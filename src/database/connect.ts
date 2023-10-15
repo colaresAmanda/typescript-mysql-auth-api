@@ -1,5 +1,7 @@
 require('dotenv').config()
 import { DataSource } from "typeorm"
+import User from "../app/entity/User"
+import { CreateUsersTable1697367277508 } from "./migrations/1697400392075-CreateUsersTable"
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -8,6 +10,13 @@ export const AppDataSource = new DataSource({
     username: process.env.MYSQL_USERNAME,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
+    "entities": [
+        User
+      ],
+      "migrations": [
+        CreateUsersTable1697367277508
+      ]
+     
 })
 
 AppDataSource.initialize()
